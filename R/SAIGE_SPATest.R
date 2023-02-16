@@ -1625,6 +1625,8 @@ Score_Test_Sparse<-function(obj.null, G, mu, mu2, varRatio ){
 Score_Test_Sparse_Survival<-function(obj.null, G, mu, mu2, varRatio){
   # mu=mu.a; mu2= mu2.a; G=G0; obj.null=obj.noK
   #tp2a0 = proc.time()
+  print(mu)
+  print(mu2)
   idx_no0<-which(G>0)
   g1<-G[idx_no0]
   noCov = FALSE
@@ -1704,6 +1706,8 @@ Score_Test_Sparse_Survival<-function(obj.null, G, mu, mu2, varRatio){
 
 
 Score_Test_Survival<-function(obj.null, G, mu, mu2, varRatio){
+  print(mu)
+  print(mu2)
   #G = G - meanG
   g<-G  -  obj.null$XXVX_inv_fg %*%  (obj.null$XV_fg %*% G)
   q<-crossprod(g, obj.null$y) 
@@ -1747,7 +1751,20 @@ Score_Test<-function(obj.null, G, mu, mu2, varRatio){
   SE = abs(BETA/qnorm(pval.noadj/2))
   #Tstat = S^2
   Tstat = S
-
+  
+  print("BETA")
+  print(BETA)
+  print("SE")
+  print(SE)
+  print("TSTAT")
+  print(TSTAT)
+  print("VAR1")
+  print(var1)
+  print("VAR2")
+  print(var2)
+  print("ratio")
+  print(varRatio)
+  
   #return(c(BETA, SE, Tstat, pval.noadj, pval.noadj, NA, var1, var2))
   #return(c(pval.noadj, pval.noadj, TRUE, var1, var2))
   return(list(BETA=BETA, SE=SE, Tstat=Tstat, pval.noadj=pval.noadj, pval.noadj=pval.noadj, is.converge=TRUE, var1=var1, var2=var2))
