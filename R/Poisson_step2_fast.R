@@ -39,6 +39,12 @@ scoreTest_SAIGE_survivalTrait_cond_sparseSigma_fast=function(G0, AC, AF, MAF, Is
     #cat("out.score1$var2: ", out.score1$var2, "\n")
     ##if(out.score["pval.noadj"] > 0.05){
    if(!isCondition){
+	   
+    print("Tstat")
+    print(as.numeric(unlist(out.score["Tstat"])[1]))
+    print("Var")
+    print(as.numeric(unlist(out.score["var1"])[1]))
+	   
     if(abs(as.numeric(unlist(out.score["Tstat"])[1])/sqrt(as.numeric(unlist(out.score["var1"])[1]))) < Cutoff){
        if(AF > 0.5){
          out.score$BETA = (-1)*out.score$BETA
