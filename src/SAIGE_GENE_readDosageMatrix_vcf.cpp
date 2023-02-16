@@ -53,7 +53,7 @@ bool setvcfDosageMatrix(const std::string& vcfFileName,  const std::string& vcfF
 
   marker_file = savvy::reader(vcfFileName);
   bool isVcfOpen = marker_file.good();
-
+  bool isVcfOpen = true;
   if(isVcfOpen){
     fmtField = vcfField;
     std::cout << "Open VCF done" << std::endl;
