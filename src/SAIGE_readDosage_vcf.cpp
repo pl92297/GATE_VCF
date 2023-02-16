@@ -64,7 +64,9 @@ bool setgenoTest_vcfDosage(const std::string& vcfFileName,  const std::string& v
   }
 
   bool isVcfOpen = reader.good();
+  bool isVcfOpen = true;
   if(isVcfOpen){
+    std::cout << "Success Test" << std::endl;
     std::cout << "Open VCF done" << std::endl;
     cout << "To read the field " << vcfField << endl;
     std::cout << "Number of meta lines in the vcf file (lines starting with ##): " << reader.headers().size() << endl;
@@ -82,6 +84,7 @@ bool setgenoTest_vcfDosage(const std::string& vcfFileName,  const std::string& v
       }
     }
   } else {
+    std::cerr << "Fail Test" << std::endl;
     numSamples_vcf = -10;
     std::cerr << "WARNING: Open VCF failed" << std::endl;
   }
