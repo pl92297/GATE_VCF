@@ -1625,8 +1625,7 @@ Score_Test_Sparse<-function(obj.null, G, mu, mu2, varRatio ){
 Score_Test_Sparse_Survival<-function(obj.null, G, mu, mu2, varRatio){
   # mu=mu.a; mu2= mu2.a; G=G0; obj.null=obj.noK
   #tp2a0 = proc.time()
-  print(mu)
-  print(mu2)
+
   idx_no0<-which(G>0)
   g1<-G[idx_no0]
   noCov = FALSE
@@ -1644,6 +1643,7 @@ Score_Test_Sparse_Survival<-function(obj.null, G, mu, mu2, varRatio){
 #    cat("idx_no0 ", idx_no0, "\n")
     #cat("dim(X1) ", dim(X1), "\n")
     #cat("dim(A1) ", dim(A1), "\n")
+    print("idx_no0 > 1")
     Z = t(A1) %*% g1
     B<-X1_fg %*% Z
     #cat("dim(Z) ", dim(Z), "\n")
@@ -1659,7 +1659,10 @@ Score_Test_Sparse_Survival<-function(obj.null, G, mu, mu2, varRatio){
     }else{
       S_a2 = obj.null$S_a - crossprod(X1_fg, y1 - mu1)
     }
-
+    print("Var2")
+    print(var2)
+    print("Var1")
+    print(var1)
     S2 = -S_a2 %*% Z
   }else{
     Z = A1 * g1
@@ -1670,6 +1673,10 @@ Score_Test_Sparse_Survival<-function(obj.null, G, mu, mu2, varRatio){
     S1 = crossprod(y1-mu1, g_tilde1)
     S_a2 = obj.null$S_a - X1_fg * (y1 - mu1)
     S2 = -S_a2 %*% Z
+    print("Var2")
+    print(var2)
+    print("Var1")
+    print(var1)
   }
 
   S<- S1+S2
