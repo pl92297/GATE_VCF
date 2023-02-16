@@ -23,11 +23,13 @@ scoreTest_SAIGE_survivalTrait_cond_sparseSigma_fast=function(G0, AC, AF, MAF, Is
 #if(!isCondition){
 #  if(IsSparse==TRUE){
     if(MAF < 0.05){
+       print("Sparse")
        out.score<-Score_Test_Sparse_Survival(obj.noK, G0, mu.a, mu2.a, varRatio);
         #tp2a = proc.time()
 	#print("tp2a-tp1")
  	#print(tp2a-tp1)
     }else{
+       print("Full")
        out.score<-Score_Test_Survival(obj.noK, G0, mu.a, mu2.a, varRatio);
         #tp2b = proc.time()
 	#print("tp2b-tp1")
